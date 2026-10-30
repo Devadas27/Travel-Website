@@ -1,0 +1,78 @@
+@import url("https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&display=swap");
+@import "tailwindcss";
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    sans-serif;
+  background-color: #ffffff;
+  color: #1f2937;
+  overflow-x: hidden;
+}
+
+/* Gentle Left-Right Sway Animation */
+@keyframes floatSkyline {
+  0% {
+    transform: translateX(0px);
+  }
+  50% {
+    transform: translateX(-40px); /* move to left 40px smooth */
+  }
+  100% {
+    transform: translateX(0px); /* then come to  right*/
+  }
+}
+
+.animate-skyline {
+  animation: floatSkyline 9s ease-in-out infinite;
+}
+
+/* Smooth Top - Bottom Floating Animation */
+@keyframes floatUpDown {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-18px); /* 18px to top */
+  }
+}
+
+/* Class 1: Normal Floating */
+.animate-float {
+  animation: floatUpDown 5s ease-in-out infinite;
+}
+
+/* Class 2: Delayed Floating (for float opposite) */
+.animate-float-delayed {
+  animation: floatUpDown 6s ease-in-out 1.5s infinite;
+}
+
+
+/* Smooth Left to Center Slide-In + Fade-In Animation */
+@keyframes slideInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-60px); /*  Start from left side  */
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);     /* end in to center*/
+  }
+}
+
+.animate-slide-left {
+  animation: slideInLeft 8.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
