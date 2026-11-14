@@ -160,8 +160,7 @@ const FeaturedTours = () => {
                   <div
                     key={pkgId}
                     onClick={() => handlePackageClick(pkg)}
-                    style={{ height: "460px" }}
-                    className="group relative rounded-3xl overflow-hidden cursor-pointer shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 bg-gray-900"
+                    className="group relative h-[380px] sm:h-[460px] rounded-3xl overflow-hidden cursor-pointer shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 bg-gray-900"
                   >
                     {/* Background Image with Smooth 1.1x Zoom on Hover */}
                     <img

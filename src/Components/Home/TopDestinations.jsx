@@ -144,7 +144,7 @@ const TopDestinations = () => {
                   <div
                     key={placeId}
                     onClick={() => handleDestinationClick(place)}
-                    className="group relative h-96 rounded-3xl overflow-hidden cursor-pointer shadow-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 bg-gray-900"
+                    className="group relative h-[340px] sm:h-96 rounded-3xl overflow-hidden cursor-pointer shadow-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 bg-gray-900"
                   >
                     {/* Image with 1.1x Zoom on Hover */}
                     <img
