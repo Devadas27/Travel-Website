@@ -18,8 +18,7 @@ const WhyChooseUs = ({ style }) => {
 
           {/* 2. Main Traveler Image Card */}
           <div
-            style={{ height: "480px" }}
-            className="relative w-full max-w-md rounded-3xl overflow-hidden shadow-2xl z-10"
+            className="relative w-full max-w-md h-[380px] sm:h-[460px] md:h-[480px] rounded-3xl overflow-hidden shadow-2xl z-10"
           >
             <img
               src="https://images.unsplash.com/photo-1501555088652-021faa106b9b?auto=format&fit=crop&w=800&q=80"
@@ -29,7 +28,7 @@ const WhyChooseUs = ({ style }) => {
           </div>
 
           {/* 3. Overlapping Circular Coastal Image (Smooth Floating Animation) */}
-          <div className="absolute -right-2 sm:right-0 top-24 w-36 h-36 sm:w-44 sm:h-44 rounded-full overflow-hidden border-4 border-white shadow-xl z-20 animate-float">
+          <div className="absolute -right-1 sm:right-0 top-16 sm:top-24 w-28 h-28 sm:w-44 sm:h-44 rounded-full overflow-hidden border-4 border-white shadow-xl z-20 animate-float">
             <img
               src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=400&q=80"
               alt="Coastal Traveler"
@@ -38,23 +37,22 @@ const WhyChooseUs = ({ style }) => {
           </div>
 
           {/* 4. Floating 'Trusted by' Badge (Static - No Moving) */}
-          <div className="absolute -left-3 sm:-left-6 bottom-28 bg-white py-3 px-5 rounded-2xl shadow-xl border border-gray-100 flex items-center gap-3 z-30">
-            <div className="w-10 h-10 rounded-full bg-[#14b8a6] text-white flex items-center justify-center text-lg font-bold shrink-0">
+          <div className="absolute -left-1 sm:-left-6 bottom-20 sm:bottom-28 bg-white py-2.5 px-3.5 sm:py-3 sm:px-5 rounded-2xl shadow-xl border border-gray-100 flex items-center gap-2.5 sm:gap-3 z-30">
+            <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-[#14b8a6] text-white flex items-center justify-center text-sm sm:text-lg font-bold shrink-0">
               <FiCheck className="stroke-2" />
             </div>
             <div>
-              <p className="text-sm font-bold text-gray-900 leading-tight">
+              <p className="text-xs sm:text-sm font-bold text-gray-900 leading-tight">
                 Trusted by
               </p>
-              <p className="text-xs text-gray-500">Trustpilot &amp; rating</p>
+              <p className="text-[10px] sm:text-xs text-gray-500">Trustpilot &amp; rating</p>
             </div>
           </div>
-          {/* 5. Bottom Right Teal Circle with Arrow (↗) (Floating Animation) */}
           {/* 5. Bottom Right Teal Circle with Arrow (Static Perfect Round + Hover Rotate) */}
-          <div className="absolute -right-2 sm:right-8 -bottom-4 w-20 h-20 rounded-full shrink-0 aspect-square bg-[#14b8a6] border-4 border-white flex items-center justify-center text-white shadow-xl z-30 cursor-pointer group/arrow">
+          <div className="absolute -right-1 sm:right-8 -bottom-3 sm:-bottom-4 w-16 h-16 sm:w-20 sm:h-20 rounded-full shrink-0 aspect-square bg-[#14b8a6] border-4 border-white flex items-center justify-center text-white shadow-xl z-30 cursor-pointer group/arrow">
             {/* Inner Dashed Round Border (Hover cheyyumbo 45 degree rotate aakum) */}
-            <div className="w-14 h-14 rounded-full border-2 border-dashed border-white/70 flex items-center justify-center transition-transform duration-500 group-hover/arrow:rotate-45">
-              <FiArrowUpRight className="text-3xl stroke-2" />
+            <div className="w-11 h-11 sm:w-14 sm:h-14 rounded-full border-2 border-dashed border-white/70 flex items-center justify-center transition-transform duration-500 group-hover/arrow:rotate-45">
+              <FiArrowUpRight className="text-2xl sm:text-3xl stroke-2" />
             </div>
           </div>
         </div>
@@ -86,15 +84,12 @@ const WhyChooseUs = ({ style }) => {
           </div>
 
           {/* Main Title */}
-          <h2 className="text-4xl sm:text-5xl font-black text-[#1e2329] tracking-tight mb-4 leading-tight">
+          <h2 className="text-2xl sm:text-4xl md:text-5xl font-black text-[#1e2329] tracking-tight mb-3 leading-tight px-1 sm:px-0">
             Why Choose Us
           </h2>
 
           {/* Description */}
-          <p
-            className="text-gray-500 text-sm sm:text-base leading-relaxed mb-8 max-w-lg"
-            style={{ fontSize: "20px", marginTop: "20px" }}
-          >
+          <p className="text-gray-500 text-xs sm:text-sm md:text-base leading-relaxed mb-6 sm:mb-8 max-w-lg mt-2 sm:mt-4 px-1 sm:px-0">
             We curate seamless, authentic, and tailor-made travel experiences
             worldwide. From handpicked stays to expert local guides, we make
             every adventure extraordinary.
@@ -114,10 +109,7 @@ const WhyChooseUs = ({ style }) => {
                 <h3 className="text-xl font-bold text-[#1e2329] mb-1 group-hover:text-[#14b8a6] transition-colors">
                   Personalized Trips
                 </h3>
-                <p
-                  className="text-gray-500 text-sm leading-relaxed max-w-md"
-                  style={{ fontSize: "18px" }}
-                >
+                <p className="text-gray-500 text-xs sm:text-sm md:text-base leading-relaxed max-w-md">
                   Custom itineraries crafted around your preferences, budget,
                   and travel dreams for a truly personal journey.
                 </p>
@@ -126,20 +118,17 @@ const WhyChooseUs = ({ style }) => {
 
             {/* Feature 2: Trusted Travel Guide (Floating Icon Delayed) */}
             <div
-              className="flex items-start gap-4 group cursor-pointer"
+              className="flex items-start gap-3.5 sm:gap-4 group cursor-pointer"
               style={{ marginTop: "40px" }}
             >
-              <div className="w-14 h-14 rounded-2xl bg-[#14b8a6] text-white flex items-center justify-center text-2xl shrink-0 shadow-md shadow-teal-500/20 group-hover:scale-110 group-hover:-rotate-6 transition-all duration-300 animate-float-delayed">
+              <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-[#14b8a6] text-white flex items-center justify-center text-xl sm:text-2xl shrink-0 shadow-md shadow-teal-500/20 group-hover:scale-110 group-hover:-rotate-6 transition-all duration-300 animate-float-delayed">
                 <FaSignsPost />
               </div>
               <div>
-                <h3 className="text-xl font-bold text-[#1e2329] mb-1 group-hover:text-[#14b8a6] transition-colors">
+                <h3 className="text-lg sm:text-xl font-bold text-[#1e2329] mb-1 group-hover:text-[#14b8a6] transition-colors">
                   Trusted Travel Guide
                 </h3>
-                <p
-                  className="text-gray-500 text-sm leading-relaxed max-w-md"
-                  style={{ fontSize: "18px" }}
-                >
+                <p className="text-gray-500 text-xs sm:text-sm md:text-base leading-relaxed max-w-md">
                   Passionate, verified local tour guides dedicated to showing
                   you hidden gems and genuine cultural experiences safely.
                 </p>
@@ -149,18 +138,13 @@ const WhyChooseUs = ({ style }) => {
 
           {/* Bottom Actions: 'Start Booking' Button + 18k+ Travellers Counter */}
           <div
-            className="flex flex-wrap items-center gap-6 sm:gap-8 pt-2"
-            style={{ marginTop: "50px" }}
+            className="flex flex-wrap items-center gap-4 sm:gap-8 pt-2"
+            style={{ marginTop: "30px" }}
           >
             {/* Start Booking Button */}
             <Link
               to="/tours"
-              className="bg-[#14b8a6] hover:bg-[#0da291] text-white font-bold text-sm px-8 py-4 rounded-full transition shadow-lg shadow-teal-600/20 hover:scale-105 flex items-center justify-center"
-              style={{
-                width: "180px",
-                height: "55px",
-                fontSize: "20px",
-              }}
+              className="bg-[#14b8a6] hover:bg-[#0da291] text-white font-bold text-sm sm:text-base px-6 sm:px-8 py-3.5 sm:py-4 rounded-full transition shadow-lg shadow-teal-600/20 hover:scale-105 flex items-center justify-center min-w-[150px] sm:min-w-[180px] h-[48px] sm:h-[55px]"
             >
               Start Booking
             </Link>

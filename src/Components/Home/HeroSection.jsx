@@ -8,7 +8,7 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="relative bg-[#fbfcfb] pt-14 pb-14 px-4 overflow-hidden flex flex-col items-center">
+    <section className="relative bg-[#fbfcfb] pt-8 sm:pt-14 pb-10 sm:pb-14 px-4 sm:px-6 lg:px-8 overflow-hidden flex flex-col items-center">
       {/* 1. Airplane Doodle (Floating Top-Bottom) */}
       <div className="hidden lg:block absolute left-16 xl:left-24 top-10 opacity-30 pointer-events-none select-none animate-float">
         <svg
@@ -86,23 +86,20 @@ const HeroSection = () => {
       </div>
 
       {/* 7. Center Main Content */}
-      <div
-        className="w-full max-w-4xl mx-auto text-center flex flex-col items-center relative z-20"
-        style={{ marginTop: "100px" }}
-      >
+      <div className="w-full max-w-4xl mx-auto text-center flex flex-col items-center relative z-20 mt-4 sm:mt-12 md:mt-20 px-3 sm:px-6">
         <p
           style={{ fontFamily: "'Caveat', cursive, sans-serif" }}
-          className="text-[#14b8a6] text-3xl sm:text-4xl font-bold mb-2 tracking-wide"
+          className="text-[#14b8a6] text-2xl sm:text-3xl md:text-4xl font-bold mb-2 tracking-wide"
         >
           Welcome to Wanderly
         </p>
 
-        <h1 className="text-4xl sm:text-6xl md:text-[65px] font-black text-[#1e2329] leading-[1.08] mb-6 tracking-tight text-center">
+        <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-[62px] font-black text-[#1e2329] leading-tight sm:leading-[1.12] mb-3 sm:mb-6 tracking-tight text-center px-1 sm:px-0">
           Explore More, Travel Better.
         </h1>
 
         {/* Slide-In Travel Paragraph */}
-        <p className="text-gray-500 text-sm sm:text-base max-w-xl mx-auto mb-12 leading-relaxed text-center animate-slide-left" style={{marginTop:'30px' , fontSize:'18px'}}>
+        <p className="text-gray-500 text-xs sm:text-sm md:text-base max-w-xl mx-auto mb-6 sm:mb-10 mt-2 sm:mt-4 leading-relaxed text-center animate-slide-left px-2 sm:px-0">
           Discover breathtaking destinations, handpicked adventures, and
           unforgettable journeys across the globe. Travel with confidence with
           Wanderly.
@@ -110,7 +107,7 @@ const HeroSection = () => {
       </div>
 
       {/* 8. Search Bar Row */}
-      <div className="w-full max-w-5xl mx-auto flex items-center justify-center gap-4 relative z-20 px-4">
+      <div className="w-full max-w-5xl mx-auto flex items-center justify-center gap-2 sm:gap-4 relative z-20 px-5 sm:px-6 lg:px-8">
         <div className="w-20 h-20 xl:w-24 xl:h-24 rounded-full overflow-hidden border-4 border-white shadow-xl shrink-0 hidden md:block">
           <img
             src="https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&fit=crop&w=400&q=80"
@@ -119,7 +116,7 @@ const HeroSection = () => {
           />
         </div>
 
-        <div className="flex-1 max-w-4xl">
+        <div className="w-full flex-1 max-w-4xl">
           <SearchBar onSearch={handleSearch} />
         </div>
 

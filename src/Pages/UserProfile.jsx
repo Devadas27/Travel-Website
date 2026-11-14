@@ -19,6 +19,7 @@ import {
   FiUploadCloud,
 } from "react-icons/fi";
 import { BiBriefcaseAlt2 } from "react-icons/bi";
+import { API_BASE_URL, BACKEND_URL } from "../config";
 
 const UserProfile = () => {
   const navigate = useNavigate();
@@ -84,7 +85,7 @@ const UserProfile = () => {
       if (token) {
         try {
           const res = await fetch(
-            "http://localhost:5000/api/user-registration/profile",
+            `${API_BASE_URL}/user-registration/profile`,
             {
               headers: {
                 Authorization: `Bearer ${token}`,
@@ -206,7 +207,7 @@ const UserProfile = () => {
           formData.append("country", updatedUser.country || "");
 
           res = await fetch(
-            "http://localhost:5000/api/user-registration/profile",
+            `${API_BASE_URL}/user-registration/profile`,
             {
               method: "PUT",
               headers: {
@@ -218,7 +219,7 @@ const UserProfile = () => {
         } else {
           // Send JSON payload
           res = await fetch(
-            "http://localhost:5000/api/user-registration/profile",
+            `${API_BASE_URL}/user-registration/profile`,
             {
               method: "PUT",
               headers: {
@@ -324,9 +325,9 @@ const UserProfile = () => {
     if (!email && !phone) return;
     try {
       const [taxiRes, pkgRes, placeRes] = await Promise.all([
-        fetch("http://localhost:5000/api/taxi-bookings"),
-        fetch("http://localhost:5000/api/package-bookings"),
-        fetch("http://localhost:5000/api/place-bookings"),
+        fetch(`${API_BASE_URL}/taxi-bookings`),
+        fetch(`${API_BASE_URL}/package-bookings`),
+        fetch(`${API_BASE_URL}/place-bookings`),
       ]);
 
       const allBookings = [];
@@ -376,7 +377,7 @@ const UserProfile = () => {
               dates: `${b.travelDate} • ${b.travelers || 1} Person(s)`,
               status: b.status || "Pending",
               image: b.packageImage
-                ? (b.packageImage.startsWith("http") ? b.packageImage : `http://localhost:5000${b.packageImage.startsWith("/") ? "" : "/"}${b.packageImage}`)
+                ? (b.packageImage.startsWith("http") ? b.packageImage : `${BACKEND_URL}${b.packageImage.startsWith("/") ? "" : "/"}${b.packageImage}`)
                 : "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=400&q=80",
               createdAt: b.createdAt || new Date().toISOString(),
             });
@@ -403,7 +404,7 @@ const UserProfile = () => {
               dates: `${b.visitDate} • ${b.timeSlot || ""}`,
               status: b.status || "Pending",
               image: b.placeImage
-                ? (b.placeImage.startsWith("http") ? b.placeImage : `http://localhost:5000${b.placeImage.startsWith("/") ? "" : "/"}${b.placeImage}`)
+                ? (b.placeImage.startsWith("http") ? b.placeImage : `${BACKEND_URL}${b.placeImage.startsWith("/") ? "" : "/"}${b.placeImage}`)
                 : "https://images.unsplash.com/photo-1596176530529-78163a4f7af2?auto=format&fit=crop&w=400&q=80",
               createdAt: b.createdAt || new Date().toISOString(),
             });
@@ -443,7 +444,7 @@ const UserProfile = () => {
     ) {
       return img;
     }
-    return `http://localhost:5000${img.startsWith("/") ? "" : "/"}${img}`;
+    return `${BACKEND_URL}${img.startsWith("/") ? "" : "/"}${img}`;
   };
 
   return (
@@ -477,12 +478,11 @@ const UserProfile = () => {
           {/* LEFT COLUMN: Profile Card & Sidebar Tabs                       */}
           {/* ============================================================== */}
           <div
-            className="w-full lg:w-[320px] shrink-0 space-y-6"
-            style={{ padding: "0px 20px" }}
+            className="w-full lg:w-[320px] shrink-0 space-y-6 px-0 sm:px-2"
           >
             <div className="bg-white rounded-3xl shadow-sm border border-gray-100 p-6 sm:p-7 flex flex-col items-center text-center">
               {/* Avatar with Circular Edit Badge */}
-              <div  style={{marginTop:'10px'}}F className="relative group">
+              <div style={{ marginTop: "10px" }} className="relative group">
                 <div className="w-28 h-28 rounded-full overflow-hidden border-4 border-white shadow-md bg-teal-50 flex items-center justify-center text-teal-600 text-3xl font-bold">
                   <img
                     src={getAvatarUrl(user.image)}

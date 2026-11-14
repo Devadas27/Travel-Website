@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import {
   FiMapPin,
   FiPhone,
@@ -39,7 +38,7 @@ const Contact = () => {
       {/* ======================================================== */}
       {/* 1. HERO BANNER WITH MOVING SKYLINE, PLANE & BALLOON      */}
       {/* ======================================================== */}
-      <section className="relative w-full bg-[#f8fafc] pt-20 pb-12 px-4 overflow-hidden flex flex-col items-center justify-center">
+      <section className="relative w-full bg-[#f8fafc] pt-12 sm:pt-20 pb-8 sm:pb-12 px-4 overflow-hidden flex flex-col items-center justify-center">
         {/* Moving Airplane Doodle */}
         <div className="absolute left-8 sm:left-16 md:left-24 top-10 opacity-30 pointer-events-none select-none animate-float">
           <svg
@@ -114,11 +113,8 @@ const Contact = () => {
         </div>
 
         {/* Title and Breadcrumbs */}
-        <div className="text-center relative z-10 mb-8 sm:mb-12 flex flex-col items-center">
-          <h1
-            className="text-4xl sm:text-5xl font-black text-black/20 tracking-tight mb-3"
-            style={{ marginTop: "50px" }}
-          >
+        <div className="text-center relative z-10 mb-6 sm:mb-12 mt-6 sm:mt-12 flex flex-col items-center px-2">
+          <h1 className="text-3xl sm:text-5xl font-black text-black/20 tracking-tight mb-2 sm:mb-3">
             Contact Us
           </h1>
         </div>
@@ -137,7 +133,7 @@ const Contact = () => {
       {/* ======================================================== */}
       {/* 2. 4 CONTACT DETAILS CARDS (Perfect Center Alignment)   */}
       {/* ======================================================== */}
-      <section className="w-full flex justify-center px-4 -mt-8 sm:-mt-12 relative z-20">
+      <section className="w-full flex justify-center px-4 -mt-6 sm:-mt-12 relative z-20">
         <div
           className="w-full max-w-6xl bg-white rounded-2xl shadow-xl border border-gray-100 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 sm:divide-x divide-gray-100 overflow-hidden"
           style={{ marginLeft: "auto", marginRight: "auto" }}
@@ -342,7 +338,7 @@ const Contact = () => {
       {/* ======================================================== */}
       {/* 4. FULL-WIDTH GOOGLE MAP                                 */}
       {/* ======================================================== */}
-      <section className="w-full h-96 sm:h-[450px] overflow-hidden border-t border-b border-gray-100">
+    <section className="w-full h-96 sm:h-[450px] overflow-hidden border-t border-b border-gray-100">
         <iframe
           title="Office Location Map"
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d105634.33128919632!2d-118.88941783309997!3d34.14811654407889!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80e8248c8b67f1b7%3A0xb3cf51a1795c345a!2sCostco%20Wholesale!5e0!3m2!1sen!2sus!4v1714000000000!5m2!1sen!2sus"

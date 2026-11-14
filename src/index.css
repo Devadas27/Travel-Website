@@ -6,6 +6,7 @@
   box-sizing: border-box;
 }
 
+html,
 body {
   font-family:
     system-ui,
@@ -20,6 +21,8 @@ body {
   background-color: #ffffff;
   color: #1f2937;
   overflow-x: hidden;
+  max-width: 100%;
+  width: 100%;
 }
 
 /* Gentle Left-Right Sway Animation */

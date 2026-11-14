@@ -17,12 +17,13 @@ const SearchBar = ({ onSearch }) => {
   };
 
   return (
-    <form style={{marginTop:'30px', width:'900px'}}
+    <form
+      style={{ marginTop: "30px" }}
       onSubmit={handleSubmit}
-      className="w-full bg-white rounded-full shadow-2xl border border-gray-100 flex items-stretch h-20 overflow-hidden"
+      className="w-full max-w-4xl mx-auto bg-white rounded-2xl md:rounded-full shadow-2xl border border-gray-100 flex flex-col md:flex-row items-stretch overflow-hidden"
     >
       {/* 1. Location */}
-      <div className="flex-1 flex items-center justify-between px-6 border-r border-gray-200" style={{padding:'20px'}}>
+      <div className="flex-1 flex items-center justify-between px-5 sm:px-6 py-3.5 md:py-0 border-b md:border-b-0 md:border-r border-gray-100">
         <div className="text-left w-full">
           <span className="block text-xs font-semibold text-gray-400 uppercase tracking-wider">
             Location
@@ -39,7 +40,7 @@ const SearchBar = ({ onSearch }) => {
       </div>
 
       {/* 2. Type */}
-      <div className="flex-1 flex items-center justify-between px-6 border-r border-gray-200">
+      <div className="flex-1 flex items-center justify-between px-5 sm:px-6 py-3.5 md:py-0 border-b md:border-b-0 md:border-r border-gray-100">
         <div className="text-left w-full">
           <span className="block text-xs font-semibold text-gray-400 uppercase tracking-wider">
             Type
@@ -60,7 +61,7 @@ const SearchBar = ({ onSearch }) => {
       </div>
 
       {/* 3. Date Form */}
-      <div className="flex-1 flex items-center justify-between px-6 border-r border-gray-200">
+      <div className="flex-1 flex items-center justify-between px-5 sm:px-6 py-3.5 md:py-0 border-b md:border-b-0 md:border-r border-gray-100">
         <div className="text-left w-full">
           <span className="block text-xs font-semibold text-gray-400 uppercase tracking-wider">
             Date Form
@@ -81,7 +82,7 @@ const SearchBar = ({ onSearch }) => {
       </div>
 
       {/* 4. Guests */}
-      <div className="flex-1 flex items-center justify-between px-6">
+      <div className="flex-1 flex items-center justify-between px-5 sm:px-6 py-3.5 md:py-0 border-b md:border-b-0 border-gray-100">
         <div className="text-left w-full">
           <span className="block text-xs font-semibold text-gray-400 uppercase tracking-wider">
             Guests
@@ -99,7 +100,7 @@ const SearchBar = ({ onSearch }) => {
       {/* 5. Search Button */}
       <button
         type="submit"
-        className="bg-[#14b8a6] hover:bg-[#0da291] text-white px-9 font-bold flex items-center justify-center gap-2 transition shrink-0 rounded-r-full"
+        className="bg-[#14b8a6] hover:bg-[#0da291] text-white py-4 md:py-0 px-8 lg:px-9 font-bold flex items-center justify-center gap-2 transition shrink-0 rounded-b-2xl md:rounded-none md:rounded-r-full cursor-pointer shadow-sm"
       >
         <span className="text-sm">Search</span>
         <FiSearch className="text-base" />

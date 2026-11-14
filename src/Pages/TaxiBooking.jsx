@@ -12,8 +12,9 @@ import {
   FiCheck,
 } from "react-icons/fi";
 import { FaCar, FaUsers } from "react-icons/fa";
+import { API_BASE_URL as BASE_URL } from "../config";
 
-const API_BASE_URL = "http://localhost:5000/api/taxi-bookings";
+const API_BASE_URL = `${BASE_URL}/taxi-bookings`;
 
 const VEHICLE_OPTIONS = [
   {
@@ -136,14 +137,14 @@ const TaxiBooking = () => {
 
   return (
     // 1. Full Screen Centered Container
-    <section className="w-full bg-[#f8fafc] py-12 md:py-20 px-4 sm:px-8 lg:px-12 flex flex-col items-center justify-center">
+    <section className="w-full bg-[#f8fafc] py-8 sm:py-16 md:py-20 px-4 sm:px-8 lg:px-12 flex flex-col items-center justify-center">
       <div className="w-full max-w-6xl mx-auto flex flex-col items-center">
         {/* Header Title & Subtitle with Generous Spacing */}
-        <div className="text-center flex flex-col items-center max-w-3xl mx-auto mb-12">
+        <div className="text-center flex flex-col items-center max-w-3xl mx-auto mb-8 sm:mb-12 px-2 sm:px-0">
           <div className="inline-flex items-center gap-2 mb-2">
             <span
-              style={{ fontFamily: "'Caveat', cursive", marginTop: "20px" }}
-              className="text-[#14b8a6] text-3xl sm:text-4xl font-bold tracking-wide"
+              style={{ fontFamily: "'Caveat', cursive" }}
+              className="text-[#14b8a6] text-2xl sm:text-4xl font-bold tracking-wide"
             >
               Wanderly Rides
             </span>
@@ -162,36 +163,29 @@ const TaxiBooking = () => {
             </svg>
           </div>
 
-          <h1
-            style={{ marginTop: "20px" }}
-            className="text-4xl sm:text-6xl font-black text-gray-900 tracking-tight mb-4"
-          >
+          <h1 className="text-2xl sm:text-5xl md:text-6xl font-black text-gray-900 tracking-tight mb-3 sm:mb-4 mt-3 sm:mt-5 text-center px-1 sm:px-0">
             Online Taxi Booking
           </h1>
 
-          <p
-            style={{ marginTop: "20px", marginBottom: "20px" }}
-            className="text-gray-600 text-base sm:text-xl leading-relaxed max-w-2xl mx-auto"
-          >
+          <p className="text-gray-600 text-xs sm:text-base md:text-xl leading-relaxed max-w-2xl mx-auto my-2 sm:my-5 text-center px-2 sm:px-0">
             Book verified, sanitized cabs for local sightseeing, outstation
             roundtrips, and seamless airport transfers.
           </p>
         </div>
 
         {/* 2. Main Booking Form Card: Spacious, Beautiful Padding & Larger Fonts */}
-        <div className="w-full bg-white rounded-3xl shadow-xl border border-gray-100 p-8 sm:p-12 lg:p-14 mb-12">
+        <div className="w-full bg-white rounded-2xl sm:rounded-3xl shadow-xl border border-gray-100 p-4 sm:p-8 lg:p-14 mb-12">
           {errorMsg && (
-            <div className="mb-8 p-5 bg-red-50 border-2 border-red-200 text-red-700 rounded-2xl text-base font-bold flex items-center gap-3">
+            <div className="mb-8 p-4 sm:p-5 bg-red-50 border-2 border-red-200 text-red-700 rounded-2xl text-base font-bold flex items-center gap-3">
               <span className="text-xl">⚠️</span>
               <span>{errorMsg}</span>
             </div>
           )}
 
-          <form onSubmit={handleSubmit} className="space-y-12">
+          <form onSubmit={handleSubmit} className="space-y-8 sm:space-y-12">
             {/* STEP 1: Route & Schedule */}
             <div
-              className="border-b border-gray-100 pb-10"
-              style={{ padding: "40px 50px" }}
+              className="border-b border-gray-100 pb-8 sm:pb-10 px-1 sm:px-6 md:px-8 py-4 sm:py-6"
             >
               <div className="flex items-center gap-3 mb-6">
                 <span className="w-9 h-9 rounded-full bg-[#14b8a6] text-white flex items-center justify-center text-base font-extrabold shadow-sm shrink-0">
@@ -350,8 +344,7 @@ const TaxiBooking = () => {
 
             {/* STEP 2: Select Vehicle Type */}
             <div
-              className="border-b border-gray-100 pb-10"
-              style={{ padding: "10px 50px" }}
+              className="border-b border-gray-100 pb-8 sm:pb-10 px-1 sm:px-6 md:px-8 py-4 sm:py-6"
             >
               <div className="flex items-center gap-3 mb-6">
                 <span className="w-9 h-9 rounded-full bg-[#14b8a6] text-white flex items-center justify-center text-base font-extrabold shadow-sm shrink-0">
@@ -431,7 +424,7 @@ const TaxiBooking = () => {
             </div>
 
             {/* STEP 3: Passenger Contact Information */}
-            <div className="pb-4" style={{ padding: "20px 50px" }}>
+            <div className="pb-4 px-1 sm:px-6 md:px-8 py-4 sm:py-6">
               <div className="flex items-center gap-3 mb-6">
                 <span className="w-9 h-9 rounded-full bg-[#14b8a6] text-white flex items-center justify-center text-base font-extrabold shadow-sm shrink-0">
                   3

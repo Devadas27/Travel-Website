@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import CustomAlert from "../Common/CustomAlert";
 import {
   FaFacebookF,
   FaTwitter,
@@ -18,36 +19,39 @@ const galleryThumbs = [
 
 const Footer = () => {
   const [email, setEmail] = useState("");
+  // State to control CustomAlert visibility and dynamic message data
+  const [alertConfig, setAlertConfig] = useState({
+    isOpen: false,
+    email: "",
+  });
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (email) {
-      alert(`Subscribed with: ${email}`);
+      const submittedEmail = email;
       setEmail("");
+      setAlertConfig({
+        isOpen: true,
+        email: submittedEmail,
+      });
     }
   };
 
   return (
     <footer
-      className="w-full text-white flex flex-col items-center px-4 sm:px-8 lg:px-12"
-      style={{ backgroundColor: "#061814", marginTop: "80px" }}
+      className="w-full text-white flex flex-col items-center px-4 sm:px-8 lg:px-12 pt-6 sm:pt-14 pb-8 sm:pb-12"
+      style={{ backgroundColor: "#061814", marginTop: "60px" }}
     >
       {/* 1. Newsletter Banner Portion (Height kootti, Padding koduthu, N-te aduthulla color ozhivakki) */}
-      <div className="w-full max-w-6xl mx-auto pt-14 pb-4">
+      <div className="w-full max-w-6xl mx-auto pt-6 sm:pt-14 pb-4">
         <div
-          className="w-full bg-[#f4f7f6] flex flex-col lg:flex-row items-center justify-between gap-8 shadow-md"
-          style={{
-            borderRadius: "0px",
-            minHeight: "210px",
-            padding: "30px 40px",
-          }}
+          className="w-full bg-[#f4f7f6] flex flex-col lg:flex-row items-center justify-between gap-6 sm:gap-8 shadow-md p-5 sm:p-10 min-h-[160px] sm:min-h-[210px] rounded-2xl sm:rounded-none"
         >
           {/* Left: Newsletter Heading with clean breathing room */}
           <div className="flex flex-col items-start text-left w-full lg:w-auto">
             <div className="inline-flex items-center gap-2 mb-2">
               <h3
-                className="font-black text-gray-900 tracking-tight"
-                style={{ fontSize: "37px", lineHeight: "1.2" }}
+                className="font-black text-gray-900 tracking-tight text-2xl sm:text-3xl md:text-[37px] leading-tight"
               >
                 Get Updated The Latest
               </h3>
@@ -68,8 +72,7 @@ const Footer = () => {
               </svg>
             </div>
             <h3
-              className="font-black text-gray-900 tracking-tight"
-              style={{ fontSize: "32px", lineHeight: "1.2" }}
+              className="font-black text-gray-900 tracking-tight text-xl sm:text-2xl md:text-[32px] leading-tight"
             >
               Newsletter
             </h3>
@@ -78,23 +81,21 @@ const Footer = () => {
           {/* Right: Email Input Pill Form */}
           <form
             onSubmit={handleSubmit}
-            className="w-full lg:w-auto flex-1 max-w-xl bg-white rounded-full p-2 pl-6 flex items-center justify-between shadow-xs border border-gray-200"
-            style={{ minHeight: "62px", padding: "10px" }}
+            className="w-full lg:w-auto flex-1 max-w-xl bg-white rounded-2xl sm:rounded-full p-2 sm:pl-6 flex flex-col sm:flex-row items-center gap-3 sm:gap-0 justify-between shadow-xs border border-gray-200"
           >
             <input
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Enter email address"
-              className="w-full bg-transparent text-gray-700 text-sm sm:text-base outline-none placeholder-gray-400 pr-3"
+              className="w-full bg-transparent text-gray-700 text-sm sm:text-base outline-none placeholder-gray-400 px-3 py-2 sm:px-0 sm:py-0"
               required
             />
             <button
               type="submit"
-              className="text-white font-bold text-sm sm:text-base rounded-full transition-all duration-300 shadow-sm whitespace-nowrap cursor-pointer hover:opacity-90 shrink-0"
+              className="w-full sm:w-auto text-white font-bold text-sm sm:text-base rounded-xl sm:rounded-full transition-all duration-300 shadow-sm whitespace-nowrap cursor-pointer hover:opacity-90 shrink-0 py-3 px-6 sm:py-3.5 sm:px-8 text-center"
               style={{
                 backgroundColor: "#14b8a6",
-                padding: "13px 32px",
               }}
             >
               Send Message
@@ -330,6 +331,15 @@ const Footer = () => {
       >
         <p style={{marginTop:'40px' , fontSize:'20px'}}>© Copyright 2026 by Wanderly HTML Template.</p>
       </div>
+
+      {/* Modern Custom Alert Popup */}
+      <CustomAlert
+        isOpen={alertConfig.isOpen}
+        onClose={() => setAlertConfig({ isOpen: false, email: "" })}
+        title="You're all set!"
+        message={`Subscribed with: ${alertConfig.email}`}
+        buttonText="Continue"
+      />
     </footer>
   );
 };

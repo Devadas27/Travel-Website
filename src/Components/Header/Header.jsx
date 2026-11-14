@@ -7,13 +7,17 @@ import {
   FiUserPlus,
   FiLogOut,
   FiBell,
+  FiMenu,
+  FiX,
 } from "react-icons/fi";
 import AuthModal from "../Common/AuthModal";
 import logoImg from "../../assets/wanderly-logo.png";
+import { API_BASE_URL } from "../../config";
 
 const Header = () => {
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const [isNotificationsOpen, setIsNotificationsOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
   const [notifications, setNotifications] = useState([]);
   const [authModal, setAuthModal] = useState({
@@ -54,7 +58,7 @@ const Header = () => {
       const phone = userObj.mobileNumber || userObj.phone || "";
       if (!email && !phone) return;
 
-      const url = `http://localhost:5000/api/notifications?email=${encodeURIComponent(
+      const url = `${API_BASE_URL}/notifications?email=${encodeURIComponent(
         email
       )}&phone=${encodeURIComponent(phone)}`;
       const res = await fetch(url);
@@ -85,7 +89,7 @@ const Header = () => {
   // Mark single notification as read
   const handleMarkAsRead = async (id) => {
     try {
-      const res = await fetch(`http://localhost:5000/api/notifications/${id}/read`, {
+      const res = await fetch(`${API_BASE_URL}/notifications/${id}/read`, {
         method: "PUT",
       });
       if (res.ok) {
@@ -104,7 +108,7 @@ const Header = () => {
     if (!storedUser) return;
     try {
       const userObj = JSON.parse(storedUser);
-      const res = await fetch("http://localhost:5000/api/notifications/mark-all-read", {
+      const res = await fetch(`${API_BASE_URL}/notifications/mark-all-read`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -119,6 +123,18 @@ const Header = () => {
       console.warn("Mark all read failed:", err);
     }
   };
+
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [isMobileMenuOpen]);
 
   // Close dropdowns when clicking outside or pressing Escape
   useEffect(() => {
@@ -135,6 +151,7 @@ const Header = () => {
       if (event.key === "Escape") {
         setIsProfileOpen(false);
         setIsNotificationsOpen(false);
+        setIsMobileMenuOpen(false);
       }
     };
 
@@ -161,21 +178,20 @@ const Header = () => {
   const unreadCount = notifications.filter((n) => !n.isRead).length;
 
   return (
-    <header className="w-full bg-[#212529] px-4 md:px-8 lg:px-12 pb-4 flex justify-center">
+    <header className="w-full bg-[#212529] px-4 sm:px-6 md:px-8 lg:px-12 pt-1 pb-3 sm:pb-4 flex justify-center">
       <div className="w-full max-w-7xl mx-auto flex justify-center">
-        <div className="w-full bg-white rounded-t-3xl rounded-br-3xl flex items-center justify-between h-24 pr-8 lg:pr-12 shadow-xl pl-0 relative">
+        <div className="w-full bg-white rounded-2xl sm:rounded-t-3xl sm:rounded-br-3xl flex items-center justify-between h-20 sm:h-24 px-4 sm:px-6 md:px-8 lg:px-12 shadow-xl relative">
           {/* Wanderly Logo Image */}
           <Link
             to="/"
             aria-label="Wanderly Home"
-            className="group flex h-full shrink-0 items-center px-4 py-2"
+            className="group flex h-full shrink-0 items-center py-2"
           >
-            <div className="flex h-16 w-auto shrink-0 items-center justify-center transition-transform duration-300 group-hover:scale-105">
+            <div className="flex h-12 sm:h-16 w-auto shrink-0 items-center justify-center transition-transform duration-300 group-hover:scale-105">
               <img
                 src={logoImg}
                 alt="Wanderly Logo"
-                className="h-full w-auto object-contain rounded-3xl"
-                style={{ marginLeft: "20px" }}
+                className="h-full w-auto object-contain rounded-xl sm:rounded-3xl"
               />
             </div>
           </Link>
@@ -208,7 +224,7 @@ const Header = () => {
           </nav>
 
           {/* Profile, Search and Booking */}
-          <div className="flex items-center gap-5 shrink-0 pr-6 lg:pr-10">
+          <div className="flex items-center gap-2 sm:gap-3.5 md:gap-5 shrink-0">
             {/* Profile Dropdown */}
             <div className="relative" ref={dropdownRef}>
               <button
@@ -216,18 +232,18 @@ const Header = () => {
                 onClick={() => setIsProfileOpen((prev) => !prev)}
                 aria-label="User Account"
                 aria-expanded={isProfileOpen}
-                className={`w-11 h-11 rounded-full border transition flex items-center justify-center focus:outline-none shadow-sm ${
+                className={`w-9 h-9 sm:w-11 sm:h-11 rounded-full border transition flex items-center justify-center focus:outline-none shadow-sm cursor-pointer ${
                   isProfileOpen
                     ? "border-[#14b8a6] text-[#14b8a6] bg-[#14b8a6]/10 ring-2 ring-[#14b8a6]/20"
                     : "border-gray-200 text-gray-700 hover:border-[#14b8a6] hover:text-[#14b8a6] hover:bg-gray-50"
                 }`}
               >
-                <FiUser className="text-xl stroke-2" />
+                <FiUser className="text-lg sm:text-xl stroke-2" />
               </button>
 
               {isProfileOpen && (
                 <div
-                  className="absolute right-0 top-full mt-3.5 w-64 bg-white rounded-2xl p-2.5 border border-gray-100 z-50 animate-in fade-in zoom-in-95 duration-150"
+                  className="absolute right-0 top-full mt-3.5 w-64 max-w-[calc(100vw-2rem)] bg-white rounded-2xl p-2.5 border border-gray-100 z-50 animate-in fade-in zoom-in-95 duration-150"
                   style={{
                     boxShadow:
                       "0 20px 40px -10px rgba(0, 0, 0, 0.2), 0 10px 20px -5px rgba(0, 0, 0, 0.08)",
@@ -345,15 +361,15 @@ const Header = () => {
                   setIsProfileOpen(false);
                 }}
                 aria-label="Notifications"
-                className={`relative w-11 h-11 rounded-full border transition flex items-center justify-center focus:outline-none shadow-sm cursor-pointer ${
+                className={`relative w-9 h-9 sm:w-11 sm:h-11 rounded-full border transition flex items-center justify-center focus:outline-none shadow-sm cursor-pointer ${
                   isNotificationsOpen
                     ? "border-[#14b8a6] text-[#14b8a6] bg-[#14b8a6]/10 ring-2 ring-[#14b8a6]/20"
                     : "border-gray-200 text-gray-700 hover:border-[#14b8a6] hover:text-[#14b8a6] hover:bg-gray-50"
                 }`}
               >
-                <FiBell className="text-xl stroke-2" />
+                <FiBell className="text-lg sm:text-xl stroke-2" />
                 {unreadCount > 0 && (
-                  <span className="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] font-black w-5 h-5 rounded-full flex items-center justify-center shadow-md animate-pulse border-2 border-white">
+                  <span className="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] font-black w-4 h-4 sm:w-5 sm:h-5 rounded-full flex items-center justify-center shadow-md animate-pulse border-2 border-white">
                     {unreadCount > 9 ? "9+" : unreadCount}
                   </span>
                 )}
@@ -362,7 +378,7 @@ const Header = () => {
               {/* Notification Dropdown Panel */}
               {isNotificationsOpen && (
                 <div
-                  className="absolute right-0 top-full mt-3.5 w-80 sm:w-96 bg-white rounded-2xl border border-gray-100 z-50 overflow-hidden animate-in fade-in zoom-in-95 duration-150"
+                  className="absolute right-0 top-full mt-3.5 w-[calc(100vw-2rem)] max-w-sm sm:w-96 bg-white rounded-2xl border border-gray-100 z-50 overflow-hidden animate-in fade-in zoom-in-95 duration-150"
                   style={{
                     boxShadow:
                       "0 20px 40px -10px rgba(0, 0, 0, 0.2), 0 10px 20px -5px rgba(0, 0, 0, 0.08)",
@@ -484,25 +500,198 @@ const Header = () => {
             <button
               type="button"
               aria-label="Search"
-              className="text-gray-700 hover:text-[#14b8a6] transition p-1 flex items-center justify-center cursor-pointer"
+              className="text-gray-700 hover:text-[#14b8a6] transition p-1 flex items-center justify-center cursor-pointer text-xl sm:text-2xl"
             >
-              <FiSearch className="text-2xl stroke-2" />
+              <FiSearch className="stroke-2" />
             </button>
 
-            {/* Start Booking */}
+            {/* Start Booking (Visible on sm+ screens; available inside mobile menu on small screens) */}
             <Link
               to="/tours"
-              className="bg-[#14b8a6] hover:bg-[#0da291] text-white font-bold text-sm px-4 rounded-full transition shadow-md whitespace-nowrap flex items-center justify-center"
-              style={{
-                minWidth: "120px",
-                height: "40px",
-              }}
+              className="hidden sm:flex bg-[#14b8a6] hover:bg-[#0da291] text-white font-bold text-xs sm:text-sm px-4 rounded-full transition shadow-md whitespace-nowrap items-center justify-center h-10 min-w-[110px] sm:min-w-[120px]"
             >
               Start Booking
             </Link>
+
+            {/* Hamburger Button for Mobile & Tablet (< lg) */}
+            <button
+              type="button"
+              onClick={() => setIsMobileMenuOpen((prev) => !prev)}
+              aria-label="Toggle Navigation Menu"
+              aria-expanded={isMobileMenuOpen}
+              className="lg:hidden w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gray-100 hover:bg-[#14b8a6]/10 text-gray-700 hover:text-[#14b8a6] flex items-center justify-center transition cursor-pointer"
+            >
+              {isMobileMenuOpen ? (
+                <FiX className="text-xl sm:text-2xl stroke-2" />
+              ) : (
+                <FiMenu className="text-xl sm:text-2xl stroke-2" />
+              )}
+            </button>
           </div>
         </div>
       </div>
+
+      {/* ========================================================= */}
+      {/* MOBILE NAVIGATION DRAWER & BACKDROP (< lg)               */}
+      {/* ========================================================= */}
+      {isMobileMenuOpen && (
+        <div className="fixed inset-0 z-50 lg:hidden">
+          {/* Backdrop with blur */}
+          <div
+            onClick={() => setIsMobileMenuOpen(false)}
+            className="fixed inset-0 bg-black/60 backdrop-blur-xs transition-opacity animate-in fade-in duration-200"
+          />
+
+          {/* Slide-out Drawer Panel */}
+          <div className="fixed inset-y-0 right-0 w-full max-w-xs sm:max-w-sm bg-white shadow-2xl flex flex-col z-10 animate-in slide-in-from-right duration-300">
+            {/* Drawer Header */}
+            <div className="p-4 sm:p-5 border-b border-gray-100 flex items-center justify-between bg-gray-50/70">
+              <Link
+                to="/"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="flex items-center gap-2"
+              >
+                <img
+                  src={logoImg}
+                  alt="Wanderly Logo"
+                  className="h-10 w-auto object-contain rounded-xl"
+                />
+              </Link>
+              <button
+                type="button"
+                onClick={() => setIsMobileMenuOpen(false)}
+                aria-label="Close menu"
+                className="w-9 h-9 rounded-full bg-white border border-gray-200 text-gray-500 hover:text-red-500 flex items-center justify-center transition cursor-pointer"
+              >
+                <FiX className="text-xl" />
+              </button>
+            </div>
+
+            {/* User Info / Quick Auth Section */}
+            <div className="p-4 border-b border-gray-100 bg-teal-50/40">
+              {currentUser ? (
+                <div className="flex items-center justify-between">
+                  <Link
+                    to="/profile"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="flex items-center gap-3 group"
+                  >
+                    <div className="w-10 h-10 rounded-xl bg-[#14b8a6] text-white flex items-center justify-center font-bold text-base shadow-sm">
+                      {currentUser.name
+                        ? currentUser.name.charAt(0).toUpperCase()
+                        : "U"}
+                    </div>
+                    <div className="overflow-hidden">
+                      <span className="text-xs text-gray-400 block font-normal">
+                        Signed in as
+                      </span>
+                      <span className="font-bold text-gray-800 text-sm block truncate group-hover:text-[#14b8a6] transition">
+                        {currentUser.name}
+                      </span>
+                    </div>
+                  </Link>
+                  <button
+                    type="button"
+                    onClick={handleLogout}
+                    className="text-xs font-bold text-red-500 hover:text-red-700 px-3 py-1.5 rounded-lg border border-red-200 bg-white cursor-pointer"
+                  >
+                    Logout
+                  </button>
+                </div>
+              ) : (
+                <div className="grid grid-cols-2 gap-2">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setIsMobileMenuOpen(false);
+                      setAuthModal({ isOpen: true, mode: "login" });
+                    }}
+                    className="w-full py-2 px-3 text-center text-xs font-bold text-gray-700 bg-white border border-gray-200 rounded-xl hover:border-[#14b8a6] hover:text-[#14b8a6] transition shadow-2xs cursor-pointer"
+                  >
+                    Login
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setIsMobileMenuOpen(false);
+                      setAuthModal({ isOpen: true, mode: "signup" });
+                    }}
+                    className="w-full py-2 px-3 text-center text-xs font-bold text-white bg-[#14b8a6] hover:bg-[#0da291] rounded-xl transition shadow-2xs cursor-pointer"
+                  >
+                    Signup
+                  </button>
+                </div>
+              )}
+            </div>
+
+            {/* Navigation Links */}
+            <nav className="flex-1 overflow-y-auto p-4 space-y-1.5 font-extrabold text-sm tracking-wider text-gray-800">
+              <Link
+                to="/"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="flex items-center px-4 py-3 rounded-xl hover:bg-[#14b8a6]/10 hover:text-[#14b8a6] transition"
+              >
+                HOME
+              </Link>
+              <Link
+                to="/destinations"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="flex items-center px-4 py-3 rounded-xl hover:bg-[#14b8a6]/10 hover:text-[#14b8a6] transition"
+              >
+                DESTINATIONS
+              </Link>
+              <Link
+                to="/tour-packages"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="flex items-center px-4 py-3 rounded-xl hover:bg-[#14b8a6]/10 hover:text-[#14b8a6] transition"
+              >
+                TOUR PACKAGES
+              </Link>
+              <Link
+                to="/taxi-booking"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="flex items-center px-4 py-3 rounded-xl hover:bg-[#14b8a6]/10 hover:text-[#14b8a6] transition"
+              >
+                TAXI BOOKING
+              </Link>
+              <Link
+                to="/about"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="flex items-center px-4 py-3 rounded-xl hover:bg-[#14b8a6]/10 hover:text-[#14b8a6] transition"
+              >
+                ABOUT
+              </Link>
+              <Link
+                to="/contact"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="flex items-center px-4 py-3 rounded-xl hover:bg-[#14b8a6]/10 hover:text-[#14b8a6] transition"
+              >
+                CONTACT
+              </Link>
+              {currentUser && (
+                <Link
+                  to="/profile"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="flex items-center px-4 py-3 rounded-xl hover:bg-[#14b8a6]/10 hover:text-[#14b8a6] transition text-[#14b8a6]"
+                >
+                  MY PROFILE & BOOKINGS
+                </Link>
+              )}
+            </nav>
+
+            {/* Drawer Footer CTA */}
+            <div className="p-4 border-t border-gray-100 bg-gray-50/70">
+              <Link
+                to="/tours"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="w-full bg-[#14b8a6] hover:bg-[#0da291] text-white font-bold text-sm py-3.5 px-4 rounded-xl transition shadow-md text-center flex items-center justify-center cursor-pointer"
+              >
+                Start Booking
+              </Link>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Login and Signup Modal */}
       <AuthModal

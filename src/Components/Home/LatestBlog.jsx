@@ -6,6 +6,7 @@ import {
   FiChevronLeft,
   FiChevronRight,
 } from "react-icons/fi";
+import { API_BASE_URL, BACKEND_URL } from "../../config";
 
 const CATEGORY_DEFAULT_IMAGES = {
   beach:
@@ -47,7 +48,7 @@ const LatestBlog = () => {
     const fetchCategories = async () => {
       try {
         setLoading(true);
-        const res = await fetch("http://localhost:5000/api/categories");
+        const res = await fetch(`${API_BASE_URL}/categories`);
         if (res.ok) {
           const data = await res.json();
           setCategories(data);
@@ -80,7 +81,7 @@ const LatestBlog = () => {
     if (cat.image) {
       return cat.image.startsWith("http")
         ? cat.image
-        : `http://localhost:5000${cat.image}`;
+        : `${BACKEND_URL}${cat.image.startsWith("/") ? "" : "/"}${cat.image}`;
     }
     const key = cat.name ? cat.name.toLowerCase().trim() : "";
     return CATEGORY_DEFAULT_IMAGES[key] || DEFAULT_IMAGE;
@@ -89,8 +90,7 @@ const LatestBlog = () => {
   return (
     <section
       ref={sectionRef}
-      className="relative w-full bg-white py-20 px-6 sm:px-12 lg:px-20 overflow-hidden flex justify-center"
-      style={{ marginTop: "100px" }}
+      className="relative w-full bg-white py-12 sm:py-20 px-4 sm:px-12 lg:px-20 overflow-hidden flex justify-center mt-10 sm:mt-24"
     >
       {/* Balloon Floating Animation */}
       <style>{`
@@ -200,7 +200,7 @@ const LatestBlog = () => {
           <div className="inline-flex items-center gap-1.5 mb-2">
             <span
               style={{ fontFamily: "'Caveat', cursive" }}
-              className="text-[#14b8a6] text-3xl sm:text-4xl font-bold tracking-wide"
+              className="text-[#14b8a6] text-2xl sm:text-4xl font-bold tracking-wide"
             >
               Categories
             </span>
@@ -220,17 +220,11 @@ const LatestBlog = () => {
             </svg>
           </div>
 
-          <h2
-            className="text-4xl sm:text-5xl font-black text-[#1e2329] tracking-tight mb-3"
-            style={{ marginTop: "20px" }}
-          >
+          <h2 className="text-2xl sm:text-4xl md:text-5xl font-black text-[#1e2329] tracking-tight mb-3 mt-3 sm:mt-5 text-center px-1 sm:px-0">
             Explore Our Categories
           </h2>
 
-          <p
-            className="text-gray-500 text-sm sm:text-base leading-relaxed max-w-md mx-auto"
-            style={{ marginTop: "20px", fontSize: "20px" }}
-          >
+          <p className="text-gray-500 text-xs sm:text-sm md:text-base leading-relaxed max-w-md mx-auto mt-2 sm:mt-4 text-center px-2 sm:px-0">
             content of a page when looking at layout the point of using lorem the
             is Ipsum less
           </p>

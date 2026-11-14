@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import skyLine from "../assets/skyline.png.jpg";
 import WhyChooseUs from "../Components/Home/WhyChooseUs";
 import Footer from "../Components/Home/Footer";
@@ -11,7 +10,7 @@ const About = () => {
       {/* ======================================================== */}
       {/* 1. HERO BANNER WITH MOVING SKYLINE, PLANE & BALLOON      */}
       {/* ======================================================== */}
-      <section className="relative w-full bg-[#f8fafc] pt-20 pb-12 px-4 overflow-hidden flex flex-col items-center justify-center">
+      <section className="relative w-full bg-[#f8fafc] pt-12 sm:pt-20 pb-8 sm:pb-12 px-4 overflow-hidden flex flex-col items-center justify-center">
         {/* Moving Airplane Doodle */}
         <div className="absolute left-8 sm:left-16 md:left-24 top-10 opacity-30 pointer-events-none select-none animate-float">
           <svg
@@ -86,11 +85,8 @@ const About = () => {
         </div>
 
         {/* Title and Breadcrumbs */}
-        <div
-          style={{ marginTop: "50px" }}
-          className="text-center relative z-10 mb-8 sm:mb-12 flex flex-col items-center"
-        >
-          <h1 className="text-4xl sm:text-5xl font-black tracking-tight mb-3 text-black/20">
+        <div className="text-center relative z-10 mb-6 sm:mb-12 mt-6 sm:mt-12 flex flex-col items-center px-2">
+          <h1 className="text-3xl sm:text-5xl font-black tracking-tight mb-2 sm:mb-3 text-black/20">
             About Us
           </h1>
         </div>

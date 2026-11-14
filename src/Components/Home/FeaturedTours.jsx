@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { FiMapPin, FiChevronLeft, FiChevronRight } from "react-icons/fi";
+import { API_BASE_URL as BASE_URL, BACKEND_URL as BACKEND_BASE_URL } from "../../config";
 
-const API_BASE_URL = "http://localhost:5000/api/tourist-packages";
-const BACKEND_BASE_URL = "http://localhost:5000";
+const API_BASE_URL = `${BASE_URL}/tourist-packages`;
 
 const FALLBACK_IMAGE =
   "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80";
@@ -13,7 +13,7 @@ const FeaturedTours = () => {
   const sectionRef = useRef(null);
   const [packages, setPackages] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [, setError] = useState(null);
 
   // Pagination state: 3 cards per row, 3 cards per page
   const [currentPage, setCurrentPage] = useState(1);
@@ -61,7 +61,7 @@ const FeaturedTours = () => {
   };
 
   return (
-    <section ref={sectionRef} className="w-full bg-white py-20 px-4 sm:px-8 lg:px-12 flex justify-center">
+    <section ref={sectionRef} className="w-full bg-white py-12 sm:py-20 px-5 sm:px-8 lg:px-12 flex justify-center">
       <div className="w-full max-w-6xl mx-auto flex flex-col items-center">
         {/* 1. Headings: Perfectly Centered */}
         <div className="text-center flex flex-col items-center max-w-2xl mx-auto mb-14">
@@ -90,15 +90,12 @@ const FeaturedTours = () => {
           </div>
 
           {/* Main Title: Popular Tourist Packages */}
-          <h2 className="text-4xl sm:text-5xl font-black text-[#1e2329] tracking-tight mb-3">
+          <h2 className="text-2xl sm:text-4xl md:text-5xl font-black text-[#1e2329] tracking-tight mb-3 mt-3 sm:mt-5 text-center px-1 sm:px-0">
             Popular Tourist Packages
           </h2>
 
           {/* Subtitle Description */}
-          <p
-            className="text-gray-500 text-sm sm:text-base leading-relaxed max-w-lg mx-auto"
-            style={{ marginTop: "30px", fontSize: "20px" }}
-          >
+          <p className="text-gray-500 text-xs sm:text-sm md:text-base leading-relaxed max-w-lg mx-auto mt-2 sm:mt-4 text-center px-2 sm:px-0">
             Discover our handpicked, highest-rated tour packages offering
             exceptional travel itineraries, breathtaking scenery, and unbeatable
             value.

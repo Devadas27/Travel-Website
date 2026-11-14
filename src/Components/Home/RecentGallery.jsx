@@ -167,16 +167,15 @@ const GalleryCard = ({ item }) => (
 const RecentGallery = () => {
   return (
     <section
-      className="w-full bg-[#fbfcfb] py-20 px-6 sm:px-12 lg:px-20 flex justify-center"
-      style={{ marginTop: "100px" }}
+      className="w-full bg-[#fbfcfb] py-12 sm:py-20 px-4 sm:px-12 lg:px-20 flex justify-center mt-10 sm:mt-24"
     >
       <div className="w-full max-w-6xl mx-auto flex flex-col items-center">
         {/* Headings: Perfectly Centered */}
-        <div className="text-center flex flex-col items-center max-w-2xl mx-auto mb-14">
+        <div className="text-center flex flex-col items-center max-w-2xl mx-auto mb-10 sm:mb-14">
           <div className="inline-flex items-center gap-1.5 mb-1">
             <span
               style={{ fontFamily: "'Caveat', cursive" }}
-              className="text-[#14b8a6] text-3xl sm:text-4xl font-bold tracking-wide"
+              className="text-[#14b8a6] text-2xl sm:text-4xl font-bold tracking-wide"
             >
               Our beautiful moment
             </span>
@@ -196,17 +195,11 @@ const RecentGallery = () => {
             </svg>
           </div>
 
-          <h2
-            className="text-4xl sm:text-5xl font-black text-[#1e2329] tracking-tight mb-3"
-            style={{ marginTop: "10px" }}
-          >
+          <h2 className="text-2xl sm:text-4xl md:text-5xl font-black text-[#1e2329] tracking-tight mb-3 mt-2 sm:mt-3 text-center px-1 sm:px-0">
             Recent Gallery
           </h2>
 
-          <p
-            className="text-gray-500 leading-relaxed max-w-lg mx-auto"
-            style={{ marginTop: "20px", fontSize: "20px" }}
-          >
+          <p className="text-gray-500 text-xs sm:text-sm md:text-base leading-relaxed max-w-lg mx-auto mt-2 sm:mt-4 text-center px-2 sm:px-0">
             A glimpse into the real adventures, smiles, and breathtaking
             destinations experienced by our wonderful travelers worldwide.
           </p>

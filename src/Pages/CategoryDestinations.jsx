@@ -9,9 +9,9 @@ import {
   FiChevronLeft,
   FiChevronRight,
 } from "react-icons/fi";
+import { API_BASE_URL as BASE_URL, BACKEND_URL as BACKEND_BASE_URL } from "../config";
 
-const API_BASE_URL = "http://localhost:5000/api/tourist-places";
-const BACKEND_BASE_URL = "http://localhost:5000";
+const API_BASE_URL = `${BASE_URL}/tourist-places`;
 
 const FALLBACK_IMAGE =
   "https://images.unsplash.com/photo-1506665531195-3566af2b4dfa?auto=format&fit=crop&w=800&q=80";
@@ -88,15 +88,15 @@ const CategoryDestinations = () => {
   };
 
   return (
-    <div className="w-full bg-[#f8fafc] min-h-screen py-12 px-4 sm:px-8 lg:px-12 flex justify-center">
+    <div className="w-full bg-[#f8fafc] min-h-screen py-8 sm:py-12 px-4 sm:px-8 lg:px-12 flex justify-center">
       <div className="w-full max-w-6xl mx-auto flex flex-col items-center">
         {/* Top Back Navigation Bar */}
-        <div className="w-full flex items-center justify-between mb-8">
+        <div className="w-full flex items-center justify-between mb-6 sm:mb-8">
           <Link
             to="/"
-            className="inline-flex items-center gap-2 text-sm font-bold text-gray-700 hover:text-[#14b8a6] transition-colors bg-white px-4 py-2.5 rounded-2xl shadow-sm border border-gray-100"
+            className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold text-gray-700 hover:text-[#14b8a6] transition-colors bg-white px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-2xl shadow-sm border border-gray-100"
           >
-            <FiArrowLeft className="text-lg" />
+            <FiArrowLeft className="text-base sm:text-lg" />
             <span>Back to Home / Categories</span>
           </Link>
 
@@ -108,12 +108,12 @@ const CategoryDestinations = () => {
         </div>
 
         {/* Header Banner */}
-        <div className="text-center flex flex-col items-center max-w-2xl mx-auto mb-12">
+        <div className="text-center flex flex-col items-center max-w-2xl mx-auto mb-8 sm:mb-12 px-2 sm:px-0">
           {/* Cursive Subtitle Badge */}
           <div className="inline-flex items-center gap-1.5 mb-2">
             <span
               style={{ fontFamily: "'Caveat', cursive" }}
-              className="text-[#14b8a6] text-3xl sm:text-4xl font-bold tracking-wide"
+              className="text-[#14b8a6] text-2xl sm:text-4xl font-bold tracking-wide"
             >
               Explore Destinations
             </span>
@@ -134,11 +134,11 @@ const CategoryDestinations = () => {
           </div>
 
           {/* Main Page Title */}
-          <h1 className="text-4xl sm:text-5xl font-black text-[#1e2329] tracking-tight mb-3">
+          <h1 className="text-2xl sm:text-4xl md:text-5xl font-black text-[#1e2329] tracking-tight mb-3 px-1 sm:px-0">
             {decodedCategory} Destinations
           </h1>
 
-          <p className="text-gray-500 text-sm sm:text-base leading-relaxed max-w-lg mx-auto">
+          <p className="text-gray-500 text-xs sm:text-sm md:text-base leading-relaxed max-w-lg mx-auto px-2 sm:px-0">
             Discover all handpicked tourist places and travel itineraries under
             the <span className="font-semibold text-gray-700">{decodedCategory}</span> category.
           </p>

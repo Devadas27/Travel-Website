@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { FiX, FiEye, FiEyeOff } from "react-icons/fi";
+import { API_BASE_URL } from "../../config";
 
 const AuthModal = ({ isOpen, onClose, initialMode = "login" }) => {
   const [mode, setMode] = useState(initialMode);
@@ -57,7 +58,7 @@ const AuthModal = ({ isOpen, onClose, initialMode = "login" }) => {
     try {
       if (mode === "login") {
         const response = await fetch(
-          "http://localhost:5000/api/user-registration/login",
+          `${API_BASE_URL}/user-registration/login`,
           {
             method: "POST",
             headers: {
@@ -83,7 +84,7 @@ const AuthModal = ({ isOpen, onClose, initialMode = "login" }) => {
         window.location.reload();
       } else {
         const response = await fetch(
-          "http://localhost:5000/api/user-registration/register",
+          `${API_BASE_URL}/user-registration/register`,
           {
             method: "POST",
             headers: {

@@ -11,12 +11,10 @@ import {
   FiMail,
   FiPhone,
   FiUsers,
-  FiTag,
 } from "react-icons/fi";
 import Footer from "../Components/Home/Footer";
 import ScrollToTop from "../Components/Common/ScrollToTop";
-
-const API_BASE_URL = "http://localhost:5000/api";
+import { API_BASE_URL, BACKEND_URL } from "../config";
 const FALLBACK_IMAGE =
   "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80";
 
@@ -73,7 +71,9 @@ const Destinations = () => {
     try {
       const stored = localStorage.getItem("user");
       if (stored) storedUser = JSON.parse(stored);
-    } catch (e) {}
+    } catch {
+      /* ignore invalid JSON in storage */
+    }
 
     setBookingForm({
       customerName: storedUser && storedUser.name ? String(storedUser.name) : "",
@@ -119,7 +119,9 @@ const Destinations = () => {
           const parsed = JSON.parse(stored);
           userId = parsed.id || parsed._id || null;
         }
-      } catch (err) {}
+      } catch {
+        /* ignore invalid JSON in storage */
+      }
 
       const payload = {
         placeName: bookingModal.place.name,
@@ -165,7 +167,7 @@ const Destinations = () => {
   const getImageUrl = (img) => {
     if (!img) return FALLBACK_IMAGE;
     if (img.startsWith("http://") || img.startsWith("https://")) return img;
-    return `http://localhost:5000${img.startsWith("/") ? "" : "/"}${img}`;
+    return `${BACKEND_URL}${img.startsWith("/") ? "" : "/"}${img}`;
   };
 
   // Extract unique categories for filter pills
@@ -187,25 +189,25 @@ const Destinations = () => {
   });
 
   return (
-    <div className="w-full bg-[#f8fafc] min-h-screen py-10 px-4 sm:px-6 lg:px-12 flex flex-col items-center select-none">
+    <div className="w-full bg-[#f8fafc] min-h-screen py-8 sm:py-12 px-4 sm:px-6 lg:px-12 flex flex-col items-center select-none">
       <div
         className="w-full max-w-7xl mx-auto flex flex-col items-center"
         style={{ marginLeft: "auto", marginRight: "auto" }}
       >
         {/* Hero Header Banner */}
-        <div className="text-center max-w-3xl mx-auto mb-12 flex flex-col items-center">
+        <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-12 flex flex-col items-center px-2 sm:px-0">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#14b8a6]/10 text-[#14b8a6] text-xs font-bold uppercase tracking-wider mb-3">
             <span>📍 Explore Wanderly</span>
           </div>
-          <h1 className="text-4xl sm:text-5xl font-black text-gray-900 tracking-tight mb-4">
+          <h1 className="text-2xl sm:text-4xl md:text-5xl font-black text-gray-900 tracking-tight mb-3 sm:mb-4 px-1 sm:px-0">
             Tourist Destinations & Attractions
           </h1>
-          <p className="text-gray-500 text-base sm:text-lg">
+          <p className="text-gray-500 text-xs sm:text-sm md:text-base px-2 sm:px-0">
             Discover breathtaking landscapes, historic wonders, and scenic hideaways. Book your visit tickets online instantly!
           </p>
 
           {/* Search Bar */}
-          <div className="mt-8 w-full max-w-xl mx-auto relative">
+          <div className="mt-6 sm:mt-8 w-full max-w-xl mx-auto relative px-1 sm:px-0">
             <div className="flex items-center bg-white rounded-2xl border border-gray-200 shadow-sm px-4 py-3 focus-within:border-[#14b8a6] focus-within:ring-2 focus-within:ring-[#14b8a6]/20 transition">
               <FiSearch className="text-gray-400 text-xl mr-3 shrink-0" />
               <input
@@ -350,7 +352,7 @@ const Destinations = () => {
           <div
             role="dialog"
             aria-modal="true"
-            className="relative w-full max-w-xl bg-white rounded-3xl shadow-2xl p-7 sm:p-9 border border-gray-100 my-auto text-left animate-in zoom-in-95 duration-200"
+            className="relative w-full max-w-xl bg-white rounded-3xl shadow-2xl p-5 sm:p-9 border border-gray-100 my-auto text-left animate-in zoom-in-95 duration-200"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Close Button */}
@@ -367,35 +369,47 @@ const Destinations = () => {
 
             {/* Success State */}
             {bookingModal.success ? (
-              <div className="text-center py-6">
-                <div className="w-16 h-16 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center text-3xl mx-auto mb-4">
+              <div className="w-full flex flex-col items-center justify-center text-center pt-3 pb-2 px-1 sm:px-4">
+                {/* Centered Checkmark Badge */}
+                <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-emerald-50 text-emerald-600 border border-emerald-100 flex items-center justify-center text-3xl sm:text-4xl shadow-xs mb-5 shrink-0">
                   <FiCheckCircle />
                 </div>
-                <h3 className="text-2xl font-black text-gray-900">
+
+                {/* Title */}
+                <h3 className="text-2xl sm:text-3xl font-black text-gray-900 tracking-tight mb-3">
                   Visit Booking Submitted!
                 </h3>
-                <p className="text-gray-500 text-sm mt-2 max-w-sm mx-auto">
-                  Your visit booking for <strong>{bookingModal.place.name}</strong> on{" "}
-                  <strong>{bookingForm.visitDate}</strong> has been sent to our admin team.
+
+                {/* Subtitle / Description */}
+                <p className="text-gray-500 text-sm sm:text-base leading-relaxed max-w-md mx-auto mb-6">
+                  Your visit booking for <strong className="text-gray-800">{bookingModal.place.name}</strong> on{" "}
+                  <strong className="text-gray-800">{bookingForm.visitDate}</strong> has been sent to our admin team.
                 </p>
-                <div className="my-5 p-3.5 bg-amber-50 border border-amber-200 rounded-2xl text-xs font-bold text-amber-800">
-                  ⏳ Current Status: <strong>Pending Admin Confirmation</strong>
-                  <br />
-                  <span className="font-normal text-gray-500 text-[11px] block mt-1">
-                    Once the admin reviews & confirms, your booking will show as <strong>Confirmed</strong> in your profile.
-                  </span>
+
+                {/* Status Notice Banner */}
+                <div className="w-full max-w-md p-4 sm:p-5 bg-amber-50/90 border border-amber-200/80 rounded-2xl text-xs sm:text-sm font-bold text-amber-900 mb-7 shadow-xs">
+                  <div className="flex items-center justify-center gap-1.5 text-amber-800 text-xs sm:text-sm font-extrabold mb-1.5">
+                    <span className="text-base">⏳</span> Current Status:{" "}
+                    <span className="underline decoration-amber-400 font-black">Pending Admin Confirmation</span>
+                  </div>
+                  <p className="font-normal text-gray-600 text-[11px] sm:text-xs leading-normal mt-1">
+                    Once the admin reviews &amp; confirms, your booking will show as{" "}
+                    <strong className="text-gray-800 font-semibold">Confirmed</strong> in your profile.
+                  </p>
                 </div>
-                <div className="flex gap-3 justify-center">
+
+                {/* Action Buttons with Proper Padding */}
+                <div className="flex flex-wrap items-center justify-center gap-3.5 sm:gap-4 w-full pt-1">
                   <Link
                     to="/profile"
-                    className="px-5 py-2.5 bg-[#14b8a6] hover:bg-[#0da291] text-white font-bold text-xs sm:text-sm rounded-xl transition shadow-md"
+                    className="px-7 py-3.5 bg-[#14b8a6] hover:bg-[#0da291] active:scale-98 text-white font-extrabold text-sm sm:text-base rounded-xl transition-all shadow-md hover:shadow-lg hover:shadow-teal-500/20 text-center inline-flex items-center justify-center cursor-pointer"
                   >
                     View My Bookings
                   </Link>
                   <button
                     type="button"
                     onClick={() => setBookingModal((prev) => ({ ...prev, isOpen: false }))}
-                    className="px-5 py-2.5 bg-gray-100 hover:bg-gray-200 text-gray-700 font-bold text-xs sm:text-sm rounded-xl transition"
+                    className="px-6 py-3.5 bg-gray-100 hover:bg-gray-200 active:scale-98 text-gray-700 hover:text-gray-900 font-bold text-sm sm:text-base rounded-xl transition-all cursor-pointer text-center"
                   >
                     Close
                   </button>

@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { FiArrowUpRight, FiMapPin, FiChevronLeft, FiChevronRight } from "react-icons/fi";
+import { API_BASE_URL as BASE_URL, BACKEND_URL as BACKEND_BASE_URL } from "../../config";
 
-const API_BASE_URL = "http://localhost:5000/api/tourist-places";
-const BACKEND_BASE_URL = "http://localhost:5000";
+const API_BASE_URL = `${BASE_URL}/tourist-places`;
 
 const FALLBACK_IMAGE =
   "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80";
@@ -13,7 +13,7 @@ const TopDestinations = () => {
   const sectionRef = useRef(null);
   const [places, setPlaces] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [, setError] = useState(null);
 
   // Pagination state: 3 cards per row, 3 cards per page
   const [currentPage, setCurrentPage] = useState(1);
@@ -61,15 +61,15 @@ const TopDestinations = () => {
 
   return (
     // 1. Outer Section: Centered with equal left-right padding
-    <section ref={sectionRef} className="w-full bg-white py-16 px-4 sm:px-8 lg:px-12 flex justify-center">
+    <section ref={sectionRef} className="w-full bg-white py-12 sm:py-16 px-5 sm:px-8 lg:px-12 flex justify-center">
       <div className="w-full max-w-6xl mx-auto flex flex-col items-center">
         {/* 2. Headings: Perfectly Centered */}
-        <div className="text-center flex flex-col items-center max-w-2xl mx-auto mb-12">
+        <div className="text-center flex flex-col items-center max-w-2xl mx-auto mb-10 sm:mb-12">
           {/* Script Subtitle with 3 Green Sprouts */}
           <div className="inline-flex items-center gap-1.5 mb-1">
             <span
               style={{ fontFamily: "'Caveat', cursive" }}
-              className="text-[#14b8a6] text-3xl sm:text-4xl font-bold tracking-wide"
+              className="text-[#14b8a6] text-2xl sm:text-4xl font-bold tracking-wide"
             >
               Destinations
             </span>
@@ -91,18 +91,12 @@ const TopDestinations = () => {
           </div>
 
           {/* Main Title: Explore Our Tourist Destinations */}
-          <h2
-            className="text-4xl sm:text-5xl font-black text-[#1e2329] tracking-tight mb-3"
-            style={{ marginTop: "20px" }}
-          >
+          <h2 className="text-2xl sm:text-4xl md:text-5xl font-black text-[#1e2329] tracking-tight mb-3 mt-3 sm:mt-5 text-center px-1 sm:px-0">
             Explore Our Tourist Destinations
           </h2>
 
           {/* Subtitle Description */}
-          <p
-            className="text-gray-500 text-sm sm:text-base leading-relaxed max-w-xl mx-auto"
-            style={{ marginTop: "20px", fontSize: "19px", lineHeight: "30px" }}
-          >
+          <p className="text-gray-500 text-xs sm:text-sm md:text-base leading-relaxed max-w-xl mx-auto mt-2 sm:mt-4 text-center px-2 sm:px-0">
             Explore the world's most iconic places with handpicked itineraries,
             top-rated tours, and unforgettable travel memories.
           </p>
@@ -220,7 +214,7 @@ const TopDestinations = () => {
 
             {/* 5. Pagination: 3 cards per row, remaining in next page */}
             {totalPages > 1 && (
-              <div className="flex items-center justify-center gap-2 mt-8">
+              <div style={{marginTop:'20px' , marginBottom:'20px'}} className="flex items-center justify-center gap-2 mt-8">
                 {/* Prev Button */}
                 <button
                   type="button"
