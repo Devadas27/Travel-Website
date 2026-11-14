@@ -14,10 +14,10 @@ import Contact from "./Pages/Contact";
 // Common Layout (Header + TopBar + Page Content)
 const Layout = () => {
   return (
-    <div className="min-h-screen flex flex-col font-sans antialiased text-gray-800">
+    <div className="min-h-screen flex flex-col font-sans antialiased text-gray-800 w-full max-w-full overflow-x-hidden">
       <TopBar />
       <Header />
-      <main className="grow">
+      <main className="grow w-full max-w-full overflow-x-hidden">
         <Outlet />
       </main>
     </div>
