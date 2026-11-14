@@ -324,12 +324,14 @@ const Footer = () => {
 
       {/* 3. Bottom Copyright Bar */}
       <div
-        className="w-full max-w-6xl mx-auto border-t text-center text-gray-400 text-sm py-8"
+        className="w-full max-w-6xl mx-auto border-t text-center text-gray-400 py-6 sm:py-8 mt-10 mb-8 sm:mb-12 px-4"
         style={{
-          borderColor: "rgba(255, 255, 255, 0.08)", marginTop:'40px' , marginBottom:'50px'
+          borderColor: "rgba(255, 255, 255, 0.08)",
         }}
       >
-        <p style={{marginTop:'40px' , fontSize:'20px'}}>© Copyright 2026 by Wanderly HTML Template.</p>
+        <p className="text-xs sm:text-sm md:text-base text-gray-400 tracking-wide text-center">
+          © Copyright 2026 by Wanderly HTML Template.
+        </p>
       </div>
 
       {/* Modern Custom Alert Popup */}

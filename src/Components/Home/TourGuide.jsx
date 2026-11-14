@@ -92,20 +92,13 @@ const TourGuide = () => {
           </div>
 
           {/* Main Title */}
-          <h2
-            className="text-4xl sm:text-5xl font-black text-[#1e2329] tracking-tight mb-3"
-            style={{ marginTop: "20px" }}
-          >
+          <h2 className="text-2xl sm:text-4xl md:text-5xl font-black text-[#1e2329] tracking-tight mb-3 mt-3 sm:mt-5 text-center px-1 sm:px-0">
             Tour Guide
           </h2>
 
           {/* Description */}
-          <p
-            className="text-gray-500 text-sm sm:text-base leading-relaxed max-w-md mx-auto"
-            style={{ marginTop: "20px", fontSize: "20px" }}
-          >
-            content of a page when looking at layout the point of using lorem
-            the is Ipsum less
+          <p className="text-gray-500 text-xs sm:text-sm md:text-base leading-relaxed max-w-md mx-auto mt-2 sm:mt-4 text-center px-2 sm:px-0">
+            Meet our experienced, certified local travel guides dedicated to giving you the best journey.
           </p>
         </div>
 

@@ -187,7 +187,7 @@ const Header = () => {
             aria-label="Wanderly Home"
             className="group flex h-full shrink-0 items-center py-2"
           >
-            <div className="flex h-12 sm:h-16 w-auto shrink-0 items-center justify-center transition-transform duration-300 group-hover:scale-105">
+            <div className="flex h-10 sm:h-14 md:h-16 w-auto shrink-0 items-center justify-center transition-transform duration-300 group-hover:scale-105">
               <img
                 src={logoImg}
                 alt="Wanderly Logo"
