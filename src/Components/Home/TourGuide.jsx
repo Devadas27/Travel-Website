@@ -63,7 +63,7 @@ const guidesData = [
 
 const TourGuide = () => {
   return (
-    <section className="w-full bg-white py-20 px-4 sm:px-8 lg:px-12 flex justify-center">
+    <section className="w-full bg-white py-8 sm:py-20 px-4 sm:px-6 lg:px-12 flex justify-center">
       <div className="w-full max-w-6xl mx-auto flex flex-col items-center">
         {/* Section Header: Perfectly Centered */}
         <div className="w-full text-center flex flex-col items-center max-w-2xl mx-auto">

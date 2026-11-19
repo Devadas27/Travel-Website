@@ -167,7 +167,7 @@ const GalleryCard = ({ item }) => (
 const RecentGallery = () => {
   return (
     <section
-      className="w-full bg-[#fbfcfb] py-12 sm:py-20 px-4 sm:px-12 lg:px-20 flex justify-center mt-10 sm:mt-24"
+      className="w-full bg-[#fbfcfb] py-8 sm:py-20 px-4 sm:px-6 lg:px-20 flex justify-center mt-6 sm:mt-24"
     >
       <div className="w-full max-w-6xl mx-auto flex flex-col items-center">
         {/* Headings: Perfectly Centered */}

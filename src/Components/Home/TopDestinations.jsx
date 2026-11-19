@@ -61,7 +61,7 @@ const TopDestinations = () => {
 
   return (
     // 1. Outer Section: Centered with equal left-right padding
-    <section ref={sectionRef} className="w-full bg-white py-10 sm:py-16 px-[5px] sm:px-8 lg:px-12 flex justify-center">
+    <section ref={sectionRef} className="w-full bg-white py-8 sm:py-16 px-4 sm:px-6 lg:px-12 flex justify-center">
       <div className="w-full max-w-6xl mx-auto flex flex-col items-center">
         {/* 2. Headings: Perfectly Centered */}
         <div className="text-center flex flex-col items-center max-w-2xl mx-auto mb-10 sm:mb-12">
@@ -104,10 +104,7 @@ const TopDestinations = () => {
 
         {/* 3. Loading State */}
         {loading ? (
-          <div
-            className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-center"
-            style={{ marginTop: "50px", marginBottom: "30px" }}
-          >
+          <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 justify-center mt-6 sm:mt-12 mb-8">
             {[1, 2, 3].map((n) => (
               <div
                 key={n}
@@ -128,10 +125,7 @@ const TopDestinations = () => {
         ) : (
           <>
             {/* 4. Cards Grid: 3 cards in a row */}
-            <div
-              className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-center"
-              style={{ marginTop: "50px", marginBottom: "30px" }}
-            >
+            <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 justify-center mt-6 sm:mt-12 mb-8">
               {currentPlaces.map((place) => {
                 const placeId = place._id || place.id;
                 const imageUrl = place.image

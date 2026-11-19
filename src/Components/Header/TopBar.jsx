@@ -3,7 +3,7 @@ import { FiMapPin, FiMail, FiClock } from "react-icons/fi";
 
 const TopBar = () => {
   return (
-    <div className="w-full bg-[#212529] text-gray-400 text-xs sm:text-[13px] min-h-[44px] h-auto p-[5px] sm:py-2.5 sm:px-6 lg:px-12 border-b border-gray-800/60 flex items-center justify-center select-none">
+    <div className="w-full bg-[#212529] text-gray-400 text-xs sm:text-[13px] min-h-[44px] h-auto px-4 sm:px-6 lg:px-12 py-2.5 sm:py-2.5 border-b border-gray-800/60 flex items-center justify-center select-none">
       <div className="max-w-7xl mx-auto w-full flex flex-col sm:flex-row justify-center sm:justify-between items-center gap-2 sm:gap-4 text-center">
         {/* Left: Location & Email */}
         <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-6 lg:ml-8 text-center">

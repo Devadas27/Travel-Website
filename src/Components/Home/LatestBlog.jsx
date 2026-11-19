@@ -90,7 +90,7 @@ const LatestBlog = () => {
   return (
     <section
       ref={sectionRef}
-      className="relative w-full bg-white py-12 sm:py-20 px-4 sm:px-12 lg:px-20 overflow-hidden flex justify-center mt-10 sm:mt-24"
+      className="relative w-full bg-white py-8 sm:py-20 px-4 sm:px-6 lg:px-20 overflow-hidden flex justify-center mt-6 sm:mt-24"
     >
       {/* Balloon Floating Animation */}
       <style>{`
