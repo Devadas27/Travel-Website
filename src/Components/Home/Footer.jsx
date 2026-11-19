@@ -39,8 +39,8 @@ const Footer = () => {
 
   return (
     <footer
-      className="w-full text-white flex flex-col items-center px-4 sm:px-8 lg:px-12 pt-6 sm:pt-14 pb-8 sm:pb-12"
-      style={{ backgroundColor: "#061814", marginTop: "60px" }}
+      className="w-full text-white flex flex-col items-center px-[5px] sm:px-8 lg:px-12 pt-6 sm:pt-14 pb-8 sm:pb-12"
+      style={{ backgroundColor: "#061814", marginTop: "40px" }}
     >
       {/* 1. Newsletter Banner Portion (Height kootti, Padding koduthu, N-te aduthulla color ozhivakki) */}
       <div className="w-full max-w-6xl mx-auto pt-6 sm:pt-14 pb-4">

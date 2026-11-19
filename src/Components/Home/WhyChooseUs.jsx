@@ -7,7 +7,7 @@ import { FaSignsPost } from "react-icons/fa6";
 const WhyChooseUs = ({ style }) => {
   return (
     <section
-      className="w-full bg-[#fbfcfb] py-12 sm:py-20 px-4 sm:px-8 lg:px-16 overflow-hidden flex justify-center"
+      className="w-full bg-[#fbfcfb] py-10 sm:py-20 px-[5px] sm:px-8 lg:px-16 overflow-hidden flex justify-center"
       style={style || { marginTop: "40px", marginBottom: "40px" }}
     >
       <div className="w-full max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">

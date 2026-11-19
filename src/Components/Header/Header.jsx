@@ -178,16 +178,16 @@ const Header = () => {
   const unreadCount = notifications.filter((n) => !n.isRead).length;
 
   return (
-    <header className="w-full bg-[#212529] px-4 sm:px-6 md:px-8 lg:px-12 pt-1 pb-3 sm:pb-4 flex justify-center">
+    <header className="w-full bg-[#212529] px-[5px] sm:px-6 md:px-8 lg:px-12 pt-1 pb-2 sm:pb-4 flex justify-center">
       <div className="w-full max-w-7xl mx-auto flex justify-center">
-        <div className="w-full bg-white rounded-2xl sm:rounded-t-3xl sm:rounded-br-3xl flex items-center justify-between h-20 sm:h-24 px-4 sm:px-6 md:px-8 lg:px-12 shadow-xl relative">
+        <div className="w-full bg-white rounded-2xl sm:rounded-t-3xl sm:rounded-br-3xl flex items-center justify-between h-16 sm:h-20 md:h-24 px-3 sm:px-6 md:px-8 lg:px-12 shadow-xl relative">
           {/* Wanderly Logo Image */}
           <Link
             to="/"
             aria-label="Wanderly Home"
             className="group flex h-full shrink-0 items-center py-2"
           >
-            <div className="flex h-10 sm:h-14 md:h-16 w-auto shrink-0 items-center justify-center transition-transform duration-300 group-hover:scale-105">
+            <div className="flex h-9 sm:h-12 md:h-16 w-auto shrink-0 items-center justify-center transition-transform duration-300 group-hover:scale-105">
               <img
                 src={logoImg}
                 alt="Wanderly Logo"
@@ -224,7 +224,7 @@ const Header = () => {
           </nav>
 
           {/* Profile, Search and Booking */}
-          <div className="flex items-center gap-2 sm:gap-3.5 md:gap-5 shrink-0">
+          <div className="flex items-center gap-1.5 sm:gap-3.5 md:gap-5 shrink-0">
             {/* Profile Dropdown */}
             <div className="relative" ref={dropdownRef}>
               <button

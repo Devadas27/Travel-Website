@@ -61,7 +61,7 @@ const TopDestinations = () => {
 
   return (
     // 1. Outer Section: Centered with equal left-right padding
-    <section ref={sectionRef} className="w-full bg-white py-12 sm:py-16 px-5 sm:px-8 lg:px-12 flex justify-center">
+    <section ref={sectionRef} className="w-full bg-white py-10 sm:py-16 px-[5px] sm:px-8 lg:px-12 flex justify-center">
       <div className="w-full max-w-6xl mx-auto flex flex-col items-center">
         {/* 2. Headings: Perfectly Centered */}
         <div className="text-center flex flex-col items-center max-w-2xl mx-auto mb-10 sm:mb-12">

@@ -8,7 +8,7 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="relative bg-[#fbfcfb] pt-8 sm:pt-14 pb-10 sm:pb-14 px-4 sm:px-6 lg:px-8 overflow-hidden flex flex-col items-center">
+    <section className="relative bg-[#fbfcfb] pt-6 sm:pt-14 pb-8 sm:pb-14 px-[5px] sm:px-6 lg:px-8 overflow-hidden flex flex-col items-center">
       {/* 1. Airplane Doodle (Floating Top-Bottom) */}
       <div className="hidden lg:block absolute left-16 xl:left-24 top-10 opacity-30 pointer-events-none select-none animate-float">
         <svg
@@ -107,7 +107,7 @@ const HeroSection = () => {
       </div>
 
       {/* 8. Search Bar Row */}
-      <div className="w-full max-w-5xl mx-auto flex items-center justify-center gap-2 sm:gap-4 relative z-20 px-5 sm:px-6 lg:px-8">
+      <div className="w-full max-w-5xl mx-auto flex items-center justify-center gap-2 sm:gap-4 relative z-20 px-[5px] sm:px-6 lg:px-8">
         <div className="w-20 h-20 xl:w-24 xl:h-24 rounded-full overflow-hidden border-4 border-white shadow-xl shrink-0 hidden md:block">
           <img
             src="https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&fit=crop&w=400&q=80"

@@ -206,15 +206,10 @@ const AuthModal = ({ isOpen, onClose, initialMode = "login" }) => {
         >
           {!isLogin && (
             <div>
-              <label
-                style={{ padding: "10px 10px" }}
-                className="block text-[11px] font-extrabold text-gray-700 uppercase tracking-wider mb-1.5"
-              >
+              <label className="block text-[11px] font-extrabold text-gray-700 uppercase tracking-wider mb-1.5">
                 Full Name
               </label>
               <input
-                style={{ padding: "5px 5px" }}
-                style={{ padding: "5px 5px" }}
                 type="text"
                 name="fullName"
                 required
@@ -227,14 +222,10 @@ const AuthModal = ({ isOpen, onClose, initialMode = "login" }) => {
           )}
 
           <div>
-            <label
-              style={{ padding: "10px 10px" }}
-              className="block text-[11px] font-extrabold text-gray-700 uppercase tracking-wider mb-1.5"
-            >
+            <label className="block text-[11px] font-extrabold text-gray-700 uppercase tracking-wider mb-1.5">
               Email Address
             </label>
             <input
-              style={{ padding: "5px 5px" }}
               type="email"
               name="email"
               required
@@ -247,14 +238,10 @@ const AuthModal = ({ isOpen, onClose, initialMode = "login" }) => {
 
           {!isLogin && (
             <div>
-              <label
-                style={{ padding: "10px 10px" }}
-                className="block text-[11px] font-extrabold text-gray-700 uppercase tracking-wider mb-1.5"
-              >
+              <label className="block text-[11px] font-extrabold text-gray-700 uppercase tracking-wider mb-1.5">
                 Phone Number
               </label>
               <input
-                style={{ padding: "5px 5px" }}
                 type="tel"
                 name="phone"
                 required
@@ -268,16 +255,12 @@ const AuthModal = ({ isOpen, onClose, initialMode = "login" }) => {
 
           <div>
             <div className="flex items-center justify-between mb-1.5">
-              <label
-                style={{ padding: "10px 10px" }}
-                className="block text-[11px] font-extrabold text-gray-700 uppercase tracking-wider"
-              >
+              <label className="block text-[11px] font-extrabold text-gray-700 uppercase tracking-wider">
                 Password
               </label>
             </div>
             <div className="relative">
               <input
-                style={{ padding: "5px 5px" }}
                 type={showPassword ? "text" : "password"}
                 name="password"
                 required
